@@ -1,0 +1,11 @@
+// global object
+console.log
+setTimeOut()
+setInterval()
+
+
+//build in module
+path: gives info about directory
+os: give info about operating system
+fs: give info about files
+event:
