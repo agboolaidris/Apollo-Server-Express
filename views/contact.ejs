@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
         body{
-            background:powderblue;
+            background: yellowgreen;
             padding:0 10%;
             margin: 0;
             display: flex;
@@ -23,17 +23,9 @@
     </style>
 </head>
 <body>
-    <%- include('partials/nav.ejs')  %>
-    <h1>welcome to the profile of <%=person %> </h1>
-    <div>
-       <p><strong>age:</strong><%=data.age%></p>
-       <p><strong>job:</strong><%=data.job%></p>
-    </div>
-    <ul>
-        <% data.hobbies.forEach(hobby=>{ %>
-          <li><%= hobby %></li>
-         <% }); %>
-     </ul>
+    <%- include('partials/nav.ejs') %>
+    <h1>Welcome to IRIS TECH of Nigeria</h1>
+    <h3>The home of Tech Around The World</h3>
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod cupiditate ipsum nostrum adipisci, consequuntur corporis nobis error, excepturi ipsam at delectus, reprehenderit explicabo rem aspernatur facilis quo cum modi minus!</p>
     
 </body>
