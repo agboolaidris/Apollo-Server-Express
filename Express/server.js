@@ -1,9 +1,14 @@
 const express = require('express')
 const path = require('path')
+const handlebars = require('express-handlebars')
 const logger = require('./Middleware/logger')
 
 //init express
 const app = express()
+
+//template engine middleware
+
+app.engine('handlebars', handlebars({defaultLayout:'main'}))
 
 
 //middleware

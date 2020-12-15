@@ -63,12 +63,12 @@ Route.put('/:id',(req,res)=>{
 
 
 Route.delete('/:id',(req,res)=>{
-    console.log(creds)
-    const found = creds.some(cred=> cred._id = parseInt(req.params.id))
+    
+    const found = creds.some(cred=> cred._id === parseInt(req.params.id))
    if(found){
      const newCreds =  creds.filter(cred=> cred._id !== parseInt(req.params.id))
-     console.log(newCreds)
-     res.json({mssg:'delete sucessful',creds: creds})
+     
+     res.json({mssg:'delete sucessful',creds: newCreds})
    }else{
        req.status(400).json({mssg:'the cred not exist'})
    }
