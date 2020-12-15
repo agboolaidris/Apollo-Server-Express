@@ -38,4 +38,41 @@ Route.post('/',(req,res)=>{
 
 })
 
+//Put cred === update
+
+Route.put('/:id',(req,res)=>{
+    const found = creds.some(cred=> cred._id === parseInt(req.params.id))
+    const body = req.body
+    if(found){
+        creds.forEach(cred=>{
+            if(cred._id === parseInt(req.params.id)){
+                cred.name = body.name ? body.name : cred.name;
+                cred.email = body.email ? body.email : cred.email;
+                res.json({mssg:'update successful',cred})
+            }
+
+            
+        })
+
+        
+    }else{
+        req.status(400).json({mssg:'not cred exist'})
+    }
+
+})
+
+
+Route.delete('/:id',(req,res)=>{
+    console.log(creds)
+    const found = creds.some(cred=> cred._id = parseInt(req.params.id))
+   if(found){
+     const newCreds =  creds.filter(cred=> cred._id !== parseInt(req.params.id))
+     console.log(newCreds)
+     res.json({mssg:'delete sucessful',creds: creds})
+   }else{
+       req.status(400).json({mssg:'the cred not exist'})
+   }
+
+})
+
 module.exports = Route
