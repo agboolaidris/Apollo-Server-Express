@@ -4,21 +4,9 @@ const app = express();
 
 console.log(path.join(__dirname, "../public"));
 //route
-app.get("/", (req, res) => {
-  res.send("<h1>Weather App!!!</h1>");
-});
-app.get("/about", (req, res) => {
-  res.send([
-    {
-      name: "kekere",
-      age: 12,
-    },
-    {
-      name: "basit",
-      age: 30,
-    },
-  ]);
-});
+app.use(express.static(path.join(__dirname, "../public")));
+app.use("/help", express.static(path.join(__dirname, "../public/help.html")));
+app.use("/about", express.static(path.join(__dirname, "../public/about.html")));
 
 app.listen(3000, () => {
   console.log("App listening on port 3000!");
