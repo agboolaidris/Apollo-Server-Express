@@ -2,8 +2,11 @@ const path = require("path");
 const express = require("express");
 const app = express();
 
-//route
+//setup handlebar engine and view location
 app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "../template"));
+
+//setup static directory to serve
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/", (req, res) => {
@@ -12,6 +15,7 @@ app.get("/", (req, res) => {
     developer: "Idris Agboola",
   });
 });
+
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "weather app",
@@ -21,6 +25,7 @@ app.get("/about", (req, res) => {
 app.get("/help", (req, res) => {
   res.render("help");
 });
+
 app.listen(3000, () => {
   console.log("App listening on port 3000!");
 });
