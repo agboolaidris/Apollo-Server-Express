@@ -33,7 +33,7 @@ app.get("/help", (req, res) => {
 
 app.get("/weather", (req, res) => {
   const { address } = req.query;
-  if (!address) return res.send({ error: "address is required in the URL" });
+  if (!address) return res.send({ error: "Location is Required" });
   weather(address, (error, { name: location, main } = {}) => {
     if (error) {
       return res.send({ error: error });

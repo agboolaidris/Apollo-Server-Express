@@ -12,6 +12,7 @@ const weather = (city, callback) => {
       if (!data) {
         callback("enable to connect to the server");
       } else {
+        console.log(data);
         callback(data);
       }
     });
