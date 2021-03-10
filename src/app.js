@@ -34,15 +34,14 @@ app.get("/help", (req, res) => {
 app.get("/weather", (req, res) => {
   const { address } = req.query;
   if (!address) return res.send({ error: "Location is Required" });
-  weather(address, (error, { name: location, main } = {}) => {
+  weather(address, (error, { name: location, main, weather } = {}) => {
     if (error) {
       return res.send({ error: error });
     } else {
+      console.log(weather[0]);
       res.send({
         location,
-        pressure: main.pressure,
-        temperature: main.temp,
-        humidity: main.humidity,
+        msg: `Mostly ${weather[0].description}. it is currently ${main.temp} degree out. There is ${main.humidity}% chance of rain`,
       });
     }
   });
