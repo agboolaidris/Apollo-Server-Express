@@ -2,7 +2,7 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 const app = express();
-
+const weather = require("./utils/weather");
 //setup handlebar engine and view location
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "../template/views"));
@@ -29,6 +29,30 @@ app.get("/help", (req, res) => {
     title: "Help Page!!!",
     developer: "David Beckham",
   });
+});
+
+app.get("/weather", (req, res) => {
+  const { address } = req.query;
+  if (!address) return res.send({ msg: "address is required in the URL" });
+  weather(address, (error, { name: location, main } = {}) => {
+    if (error) {
+      return res.send({ msg: error });
+    } else {
+      res.send({
+        location,
+        pressure: main.pressure,
+        temperature: main.temp,
+        humidity: main.humidity,
+      });
+    }
+  });
+});
+
+app.get("/product", (req, res) => {
+  const { search, rating } = req.query;
+  if (!search) return res.send({ msg: "search is required in the URL" });
+  console.log(req.query);
+  res.send({ product: [] });
 });
 
 app.get("/help/*", (req, res) => {
