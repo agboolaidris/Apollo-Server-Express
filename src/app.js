@@ -23,10 +23,25 @@ app.get("/about", (req, res) => {
     developer: "Idris Agboola",
   });
 });
+
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help Page!!!",
     developer: "David Beckham",
+  });
+});
+
+app.get("/help/*", (req, res) => {
+  res.render("NotFound", {
+    article: "Help Article",
+    developer: "Loniel Messi",
+  });
+});
+
+app.get("*", (req, res) => {
+  res.render("NotFound", {
+    article: "Page",
+    developer: "Loniel Messi",
   });
 });
 
