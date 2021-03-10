@@ -4,7 +4,7 @@ const app = express();
 
 //setup handlebar engine and view location
 app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "../template"));
+app.set("views", path.join(__dirname, "../template/views"));
 
 //setup static directory to serve
 app.use(express.static(path.join(__dirname, "../public")));
