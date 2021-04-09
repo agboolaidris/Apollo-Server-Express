@@ -1,0 +1,22 @@
+query getPost {
+  getAllPosts {
+    title
+    featureImg
+    content
+    updated_at
+    created_at
+  }
+}
+
+mutation createPost {
+  createPost(
+    newPost: {
+      title: "hello world"
+      content: "join me "
+      featureImg: "https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png"
+    }
+  ) {
+    title
+    featureImg
+  }
+}

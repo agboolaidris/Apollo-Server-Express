@@ -4,12 +4,8 @@ export default {
   Query: {
     getAllPosts: async () => {
       try {
-        return [
-          {
-            title: "Welocme to graphql",
-            content: "hahhhhhhhh bh",
-          },
-        ];
+        const res = await Post.find();
+        return res;
       } catch (error) {}
     },
   },
@@ -23,12 +19,13 @@ export default {
       const { title, content, featureImg } = newPost;
 
       try {
-        const res = await Post.insert({
+        await Post.insert({
           title,
           content,
+          featureImg,
         });
-        console.log(res);
-        return res;
+
+        return newPost;
       } catch (error) {
         console.log(error);
       }

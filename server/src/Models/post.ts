@@ -1,16 +1,26 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
 @Entity()
 export default class Posts extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id!: number;
+  "id": number;
 
-  @Column()
-  title!: string;
+  @Column({ type: "varchar" })
+  "title": string;
 
-  @Column()
-  content!: string;
+  @Column({ type: "varchar" })
+  "content": string;
 
   @Column({ type: "varchar", nullable: true })
-  featureImg: any;
+  "featureImg": string;
+
+  @CreateDateColumn({ name: "created_at" }) "created_at": Date;
+  @UpdateDateColumn({ name: "updated_at" }) "updated_at": Date;
 }
