@@ -1,3 +1,3 @@
 import post from "./post";
-
-export default [post];
+import baseDef from "./baseDef";
+export default [baseDef, post];
