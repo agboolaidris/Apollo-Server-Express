@@ -1,15 +1,15 @@
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
 import { ENV } from "./Config";
-import { resolvers, typeDefs } from "./Graphql/index";
+import { graphql } from "./Graphql/index";
 
 //initailize express application
 const app = express();
 const PORT = ENV.PORT || 5000;
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  typeDefs: graphql.typeDefs,
+  resolvers: graphql.resolvers,
   playground: ENV.IN_PROD,
   context: {},
 });

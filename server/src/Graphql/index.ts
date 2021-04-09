@@ -1,6 +1,7 @@
 import resolvers from "./Resolvers";
 import typeDefs from "./TypesDefs";
-export default {
+
+export const graphql = {
   resolvers,
   typeDefs,
 };

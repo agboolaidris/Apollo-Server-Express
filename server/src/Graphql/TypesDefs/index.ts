@@ -1,3 +1,3 @@
-import { gql } from "apollo-server-express";
+import post from "./post";
 
-export default gql``;
+export default [post];
