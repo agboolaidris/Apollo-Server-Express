@@ -5,7 +5,8 @@ export default gql`
   }
   extend type Mutation {
     createPost(newPost: InputPost!): Post!
-    updatePostByID(updatePost: InputPost, id: ID!): Post!
+    updatePostByID(updatePost: InputPost!, uuid: ID!): Post!
+    deletePostByID(uuid: ID!): Post!
   }
   input InputPost {
     title: String!
@@ -13,7 +14,7 @@ export default gql`
     featureImg: String
   }
   type Post {
-    id: ID!
+    uuid: ID!
     title: String!
     content: String!
     featureImg: String

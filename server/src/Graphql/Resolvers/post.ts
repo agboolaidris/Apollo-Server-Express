@@ -28,12 +28,28 @@ export default {
     },
     updatePostByID: async (
       parent: any,
-      { updatePost, id }: any,
+      { updatePost, uuid }: any,
       context: any,
       info: any
     ) => {
+      const { title, content, featureImg } = updatePost;
       try {
-        const { title, content, featureImg } = updatePost;
+        const post = await Post.findOneOrFail({ uuid });
+        post.title = title || post.title;
+        post.content = content || post.content;
+        post.featureImg = featureImg || post.featureImg;
+
+        await post.save();
+        return post;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    deletePostByID: async (parent: any, { uuid }: any) => {
+      try {
+        const post = await Post.findOneOrFail({ uuid });
+        await post.remove();
+        return post;
       } catch (error) {
         console.log(error);
       }
