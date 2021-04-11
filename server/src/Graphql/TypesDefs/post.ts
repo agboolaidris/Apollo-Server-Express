@@ -4,14 +4,16 @@ export default gql`
     getAllPosts: [Post!]!
   }
   extend type Mutation {
-    createPost(newPost: NewPost): Post!
+    createPost(newPost: InputPost!): Post!
+    updatePostByID(updatePost: InputPost, id: ID!): Post!
   }
-  input NewPost {
+  input InputPost {
     title: String!
     content: String!
     featureImg: String
   }
   type Post {
+    id: ID!
     title: String!
     content: String!
     featureImg: String

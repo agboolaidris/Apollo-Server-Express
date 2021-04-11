@@ -19,13 +19,21 @@ export default {
       const { title, content, featureImg } = newPost;
 
       try {
-        await Post.insert({
-          title,
-          content,
-          featureImg,
-        });
-
-        return newPost;
+        const user = Post.create({ title, content, featureImg });
+        await user.save();
+        return user;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    updatePostByID: async (
+      parent: any,
+      { updatePost, id }: any,
+      context: any,
+      info: any
+    ) => {
+      try {
+        const { title, content, featureImg } = updatePost;
       } catch (error) {
         console.log(error);
       }
