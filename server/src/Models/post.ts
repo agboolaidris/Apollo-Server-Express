@@ -1,19 +1,8 @@
-import { v4 as uuid } from "uuid";
-import {
-  BaseEntity,
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-  BeforeInsert,
-} from "typeorm";
+import { BaseEntity, Column, Entity } from "typeorm";
+import Common from "./common";
 
 @Entity()
-export default class Posts extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  "id": number;
-
+export default class Posts extends Common {
   @Column({ type: "varchar" })
   "title": string;
 
@@ -22,15 +11,4 @@ export default class Posts extends BaseEntity {
 
   @Column({ type: "varchar", nullable: true })
   "featureImg": string;
-
-  @Column({ type: "varchar", name: "uuid" })
-  "uuid": string;
-
-  @BeforeInsert()
-  updateUuid() {
-    this.uuid = uuid();
-  }
-
-  @CreateDateColumn({ name: "created_at" }) "created_at": Date;
-  @UpdateDateColumn({ name: "updated_at" }) "updated_at": Date;
 }
