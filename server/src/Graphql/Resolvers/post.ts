@@ -3,7 +3,8 @@ export default {
   Query: {
     getAllPosts: async () => {
       try {
-        const res = await Post.find();
+        const res = await Post.find({ relations: ["user"] });
+        console.log(res);
         return res;
       } catch (error) {}
     },
@@ -19,8 +20,8 @@ export default {
       try {
         const user = await User.findOneOrFail({ uuid: userId });
         const post = new Post({ title, content, featureImg, user });
-        console.log(post);
         await post.save();
+        console.log(post);
         return post;
       } catch (error) {
         console.log(error);

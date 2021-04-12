@@ -20,5 +20,6 @@ export default gql`
     featureImg: String
     created_at: String
     updated_at: String
+    user: User
   }
 `;

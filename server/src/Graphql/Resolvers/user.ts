@@ -3,7 +3,8 @@ export default {
   Query: {
     getAllUser: async (parent: any, args: any) => {
       try {
-        const user = await User.find();
+        const user = await User.find({ relations: ["posts"] });
+        console.log(user);
         return user;
       } catch (error) {
         console.log(error);

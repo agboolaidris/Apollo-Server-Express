@@ -13,6 +13,6 @@ export default class Posts extends Common {
   @Column({ type: "varchar", nullable: true })
   "featureImg": string;
 
-  @ManyToOne(() => User, (user) => user.post)
+  @ManyToOne(() => User, (user) => user.posts)
   "user": User;
 }

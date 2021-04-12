@@ -17,5 +17,5 @@ export default class User extends Common {
   "avater": string;
 
   @OneToMany(() => Post, (post) => post.user)
-  "post": Post[];
+  "posts": Post[];
 }
