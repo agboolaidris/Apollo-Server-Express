@@ -1,7 +1,8 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, OneToMany } from "typeorm";
+import { Post } from ".";
 import Common from "./common";
 
-@Entity()
+@Entity("users")
 export default class User extends Common {
   @Column({ type: "varchar" })
   "username": string;
@@ -14,4 +15,7 @@ export default class User extends Common {
 
   @Column({ nullable: true, type: "varchar" })
   "avater": string;
+
+  @OneToMany(() => Post, (post) => post.user)
+  "post": Post[];
 }

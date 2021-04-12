@@ -4,7 +4,7 @@ export default gql`
     getAllPosts: [Post!]!
   }
   extend type Mutation {
-    createPost(newPost: InputPost!): Post!
+    createPost(newPost: InputPost!, userId: String): Post!
     updatePostByID(updatePost: InputPost!, uuid: ID!): Post!
     deletePostByID(uuid: ID!): Post!
   }

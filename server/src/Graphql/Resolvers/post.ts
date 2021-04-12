@@ -1,5 +1,4 @@
-import { Post } from "../../Models";
-
+import { Post, User } from "../../Models";
 export default {
   Query: {
     getAllPosts: async () => {
@@ -12,16 +11,17 @@ export default {
   Mutation: {
     createPost: async (
       parent: any,
-      { newPost }: any,
+      { newPost, userId }: any,
       context: any,
       info: any
     ) => {
       const { title, content, featureImg } = newPost;
-
       try {
-        const user = Post.create({ title, content, featureImg });
-        await user.save();
-        return user;
+        const user = await User.findOneOrFail({ uuid: userId });
+        const post = new Post({ title, content, featureImg, user });
+        console.log(post);
+        await post.save();
+        return post;
       } catch (error) {
         console.log(error);
       }

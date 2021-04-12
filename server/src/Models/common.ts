@@ -8,7 +8,12 @@ import {
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-export default class Common extends BaseEntity {
+export default abstract class Common extends BaseEntity {
+  constructor(model?: Partial<any>) {
+    super();
+    Object.assign(this, model);
+  }
+
   @PrimaryGeneratedColumn()
   "id": number;
 

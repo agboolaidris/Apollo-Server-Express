@@ -1,7 +1,8 @@
-import { BaseEntity, Column, Entity } from "typeorm";
+import { BaseEntity, Column, Entity, ManyToOne } from "typeorm";
+import { User } from ".";
 import Common from "./common";
 
-@Entity()
+@Entity("posts")
 export default class Posts extends Common {
   @Column({ type: "varchar" })
   "title": string;
@@ -11,4 +12,7 @@ export default class Posts extends Common {
 
   @Column({ type: "varchar", nullable: true })
   "featureImg": string;
+
+  @ManyToOne(() => User, (user) => user.post)
+  "user": User;
 }
