@@ -16,6 +16,6 @@ export default class User extends Common {
   @Column({ nullable: true, type: "varchar" })
   "avater": string;
 
-  @OneToMany(() => Post, (post) => post.user)
+  @OneToMany(() => Post, (post) => post.user, { onDelete: "CASCADE" })
   "posts": Post[];
 }
