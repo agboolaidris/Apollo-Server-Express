@@ -4,9 +4,11 @@ import { createConnection } from "typeorm";
 import { Post, User } from "./Models";
 import { ENV } from "./Config";
 import { typeDefs, resolvers } from "./Graphql/index";
+import { join } from "path";
 
 //initailize express application
 const app = express();
+app.use(express.static(join(__dirname, "./uploads")));
 const PORT = ENV.PORT || 5000;
 
 const server = new ApolloServer({

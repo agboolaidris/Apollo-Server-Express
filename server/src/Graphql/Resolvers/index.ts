@@ -1,3 +1,4 @@
 import post from "./post";
 import user from "./user";
-export default [post, user];
+import file from "./file";
+export default [post, user, file];

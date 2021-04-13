@@ -8,6 +8,14 @@ export default {
         return res;
       } catch (error) {}
     },
+    getPostByID: async (parent: any, { uuid }: any) => {
+      try {
+        const post = await Post.findOneOrFail({ uuid });
+        return post;
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   Mutation: {
     createPost: async (
@@ -50,7 +58,11 @@ export default {
       try {
         const post = await Post.findOneOrFail({ uuid });
         await post.remove();
-        return post;
+        return {
+          uuid: post.uuid,
+          successful: true,
+          msg: "post deleted",
+        };
       } catch (error) {
         console.log(error);
       }

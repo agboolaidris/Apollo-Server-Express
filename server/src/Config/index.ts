@@ -10,4 +10,5 @@ export const ENV = {
     PASSWORD: process.env.DB_PASSWORD,
     DBNAME: process.env.DB_NAME,
   },
+  URL: `${process.env.BASE_URL}`,
 };
