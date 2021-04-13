@@ -5,7 +5,6 @@ export default {
   Mutation: {
     fileUploader: async (parent: any, { file }: any) => {
       try {
-        console.log(file);
         let { filename, createReadStream } = await file;
 
         const stream = createReadStream();
@@ -21,6 +20,7 @@ export default {
         let writeStream = await createWriteStream(serverFile);
         await stream.pipe(writeStream);
 
+        console.log(ENV.URL);
         serverFile = `${ENV.URL}${serverFile.split("uploads")[1]}`;
 
         return {
